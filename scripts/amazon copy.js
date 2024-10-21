@@ -1,6 +1,3 @@
-import { cart } from '../data/cart.js';
-
-
 let productsHTML = ' ';
 
 products.forEach((product)=>
@@ -28,7 +25,7 @@ products.forEach((product)=>
           </div>
 
           <div class="product-quantity-container">
-            <select>
+            <select class="js-selected">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -91,14 +88,25 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button)=>
       }
 
       let cartQuantity = 0;
-
+      const quantityItem = document.querySelector('.js-selected');
+      console.log(quantityItem.value);
       cart.forEach((item)=> 
       {
         cartQuantity += item.quantity;
       });
+      
+      document.querySelector('.js-cart-quantity').innerHTML =`${cartQuantity + quantityItem.value}` ;
+      
+      
+      
 
-      document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
     
     });
+
+    
+    
    
   });
+  
+
+ 
